@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+	  #ashu{
+	  text-align: center ;
+		position:center;
+		font-family: sans-serif;
+	  }
+
+} 
+	  
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="1000" height="450"></canvas>
+
+    <script>
+      window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      })();
+	  function heading(context) {
+		context.beginPath();
+		context.textBaseline = "middle";
+		context.font="40px Georgia";
+		context.fillText("Doubly Linked List",360,30);
+	  }
+      function drawRectangle(myRectangle, context) {
+	  
+        context.beginPath();
+        context.rect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+        context.fillStyle = '#8ED6FF';
+        context.fill();
+        context.lineWidth = myRectangle.borderWidth;
+		
+        context.strokeStyle = 'black';
+		//write a text
+		context.textBaseline = "middle";
+        context.fillStyle = 'black';
+		context.font="20px Georgia";
+		var a=myRectangle.width/2;
+		var aa= a+myRectangle.x-20;
+		var aaa= myRectangle.x+myRectangle.width;
+		var aaaa= 50+myRectangle.x+myRectangle.width;
+		context.moveTo(aaa,100);
+		context.lineTo(aaaa,100);
+		context.stroke();
+		context.fillText(myRectangle.text,aa,100);
+		context.strokeStyle="#fff5ee";
+		context.strokeRect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+		context.font="15px Georgia";
+		context.fillText("A part of a doubly linked list",500,150);
+		 }
+		 
+		 function drawRectangle1(myRectangle, context) {
+        context.beginPath();
+        context.rect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+        context.fillStyle = '#8ED6FF';
+        context.fill();
+        context.lineWidth = myRectangle.borderWidth;
+			
+        context.strokeStyle = 'black';
+		//write a text
+		context.textBaseline = "middle";
+        context.fillStyle = 'black';
+		context.font="20px Georgia";
+		var a=myRectangle.width/2;
+		var aa= a+myRectangle.x-20;
+		
+		context.moveTo(650,220);
+		context.lineTo(700,220);
+		context.stroke();
+		context.fillText(myRectangle.text,aa,220);
+		context.strokeStyle="#fff5ee";
+		context.strokeRect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+		context.font="15px Georgia";
+		context.fillText("Header Node",530,270);
+		 }
+		 function drawRectangle2(myRectangle, context) {
+        context.beginPath();
+        context.rect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+        context.fillStyle = '#8ED6FF';
+        context.fill();
+        context.lineWidth = myRectangle.borderWidth;
+			
+        context.strokeStyle = 'black';
+		//write a text
+		context.textBaseline = "middle";
+        context.fillStyle = 'black';
+		context.font="20px Georgia";
+		var a=myRectangle.width/2;
+		var aa= a+myRectangle.x-20;
+		
+		context.moveTo(650,310);
+		context.lineTo(700,310);
+		context.moveTo(650,340);
+		context.lineTo(700,340);
+		context.moveTo(450,310);
+		context.lineTo(500,310);
+		context.moveTo(500,340);
+		context.lineTo(450,340);
+		context.stroke();
+		context.fillText(myRectangle.text,aa,320);
+		context.strokeStyle="#fff5ee";
+		context.strokeRect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+		context.font="20px Georgia";
+		context.fillText("Reverse look up demonstration",450,390);
+		 context.font="15px Georgia";
+		context.fillText("temp",560,370);
+		context.font="15px Georgia";
+		context.fillText("temp->next",730,370);
+		context.font="15px Georgia";
+		context.fillText("temp->prev",330,370);
+		 }
+		 
+		function clicked1(myRectangle12,myRectangle13,myRectangle14,context)
+			{
+				drawRectangle1(myRectangle12,context);
+				drawRectangle1(myRectangle14,context);
+				drawRectangle1(myRectangle13,context);
+			}
+		function mouseovered1(myRectangle15,myRectangle16,myRectangle17,myRectangle18,myRectangle19,myRectangle20,myRectangle21,myRectangle22,myRectangle23,context)
+			{
+				drawRectangle2(myRectangle15,context);
+				drawRectangle2(myRectangle16,context);
+				drawRectangle2(myRectangle17,context);
+				drawRectangle2(myRectangle18,context);
+				drawRectangle2(myRectangle19,context);
+				drawRectangle2(myRectangle20,context);
+				drawRectangle2(myRectangle21,context);
+				drawRectangle2(myRectangle22,context);
+				drawRectangle2(myRectangle23,context);
+			}
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+	   var myRectangle = {
+        x: 100,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"left",
+
+      };
+	  var myRectangle1 = {
+        x: 150,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"info",
+
+};
+	  var myRectangle2 = {
+        x: 200,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"right"
+		
+		};
+	  var myRectangle3 = {
+        x: 300,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"left"
+};
+	  var myRectangle4 = {
+        x: 350,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"info"
+};
+	  var myRectangle5 = {
+        x: 400,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"right"
+};
+	  var myRectangle6 = {
+        x: 500,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"left"
+};
+	  var myRectangle7 = {
+        x: 550,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"info"
+};
+	  var myRectangle8 = {
+        x: 600,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"right"
+};
+	  var myRectangle9 = {
+        x: 700,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"left"
+};
+	  var myRectangle10 = {
+        x: 750,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"info"
+};
+	  var myRectangle11 = {
+        x: 800,
+        y: 75,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"right"
+};
+	  var myRectangle12 = {
+        x: 500,
+        y: 200,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"null"
+};
+	  var myRectangle13 = {
+        x: 550,
+        y: 200,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"info"
+};
+	  var myRectangle14 = {
+        x: 600,
+        y: 200,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"right"
+};
+		var myRectangle15 = {
+          x: 500,
+        y: 300,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"null"
+};
+	  var myRectangle16 = {
+        x: 550,
+        y: 300,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"info"
+};
+	  var myRectangle17 = {
+        x: 600,
+        y: 300,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"right"
+};
+		var myRectangle18 = {
+        x: 700,
+        y: 300,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"left"
+};
+	  var myRectangle19 = {
+        x: 750,
+        y: 300,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"info"
+};
+	  var myRectangle20 = {
+        x: 800,
+        y: 300,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"right"
+};
+		var myRectangle21 = {
+          x: 400,
+        y: 300,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"left"
+};
+	  var myRectangle22 = {
+        x: 350,
+        y: 300,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"info"
+};
+	  var myRectangle23 = {
+        x: 300,
+        y: 300,
+        width: 50,
+        height: 50,
+        borderWidth: 5,
+		text:"null"
+};
+
+    drawRectangle(myRectangle, context);
+	drawRectangle(myRectangle1, context);
+	drawRectangle(myRectangle2, context);
+	drawRectangle(myRectangle3, context);
+	drawRectangle(myRectangle4, context);
+	drawRectangle(myRectangle5, context);
+	drawRectangle(myRectangle6, context);
+	drawRectangle(myRectangle7, context);
+	drawRectangle(myRectangle8, context);
+	drawRectangle(myRectangle9, context);
+	drawRectangle(myRectangle10, context);
+	drawRectangle(myRectangle11, context);
+	heading(context);
+	</script>
+	<p id="ashu"><p>
+	</br>
+	</br>
+	</br>
+	</br>
+	<p id= "aashua"> To see header node, click here </p>
+	<button id="myBtn" type="button">click here </button>
+	<div id= "aashu"> Reverse look up </div>
+	<script>
+	document.getElementById("myBtn").addEventListener("click", function(){ clicked1(myRectangle12,myRectangle13,myRectangle14,context);}); 
+	document.getElementById("aashu").addEventListener("mouseover", function(){ mouseovered1(myRectangle15,myRectangle16,myRectangle17,myRectangle18,myRectangle19,myRectangle20,myRectangle21,myRectangle22,myRectangle23,context);}); 
+    </script>
+
+  </body>
+</html>      
