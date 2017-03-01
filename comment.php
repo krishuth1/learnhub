@@ -43,24 +43,28 @@ FUNCTION getcomments($conn)
 			   echo nl2br($row['message'])."<br>";
 			  
 			   }
-		
-	
-	  
-        
-	     echo "<form class='delete-button' method='POST' action='".deletecomments($conn)."'>
-		<input type='hidden' name='cid' value='".$row['id']."'>
+	   if(isset($_SESSION['id']))
+	   {  
+         if($_SESSION['id']==$rowl['id'])
+		 { 
+	     echo "<form class='delete-button' method='POST' action='".deletecomments($connect)."'>
+		<input type='hidden' name='cid' value='".$row['cid']."'>
 		<button  name='commentDelete'>Delete</button>
 		</form><form class='edit-button' method='POST' action='editcomment.php'>
-		<input type='hidden' name='cid' value='".$row['id']."'>
+		<input type='hidden' name='cid' value='".$row['cid']."'>
 		<input type='hidden' name='uid' value='".$row['uid']."'>
 		<input type='hidden' name='message' value='".$row['message']."'>
 		<button>Edit</button>
-		</form>
-		<form class='reply-button' method='POST' action='reply.php'>
-		<input type='hidden' name='cid' value='".$row['id']."'>
-	    <input type='hidden' name='uid' value='".$_SESSION['id']."'>
-        <button>Reply</button>
 		</form>";
+		}
+		else{
+		   echo "<form class='edit-button' method='POST' action='replycomment.php'>
+		         <input type='hidden' name='cid' value='".$row['cid']."'>
+				 <input type='hidden' name='uid' value='".$_SESSION['id']."'>
+                 <button>Reply</button>
+		      </form>";
+	        }
+	   }
 		
 	   
 	}
