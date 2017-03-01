@@ -5,7 +5,8 @@ FUNCTION setcomments($conn)
   if(isset($_POST['commentSubmit']))
   {
 	$id1=$_GET['id2'];
-	  $uid=$_POST['uid'];
+	
+	$uid=$_POST['uid'];
 	$post_id=$_GET['id'];
     $message=$_POST['message'];
     
@@ -77,7 +78,23 @@ FUNCTION editcomments($conn)
 	{
 		echo "Datas edited";
 	}
-	header("Location:topic.php");
+	
+	$sql = "SELECT * FROM topics1";
+				$result = $conn->query($sql);
+		if ($result->num_rows >0){
+		
+				while($row = $result->fetch_assoc()){
+
+						$check_u = "SELECT * FROM myguests WHERE username='".$row['topic_creator']."'";
+						$result1=$conn->query($check_u);
+						while($row_u = $result1->fetch_assoc()){
+							$user_id = $row_u['id'];
+					}
+				}
+		}
+		$id=$_GET['id'];
+		
+	header("Location:topic.php?id=$id&id2=$user_id");
   }
 }
 FUNCTION  deletecomments($conn)
@@ -90,7 +107,23 @@ FUNCTION  deletecomments($conn)
 	{
 		echo "Datas deleted";
 	}
-	header("Location:topic.php");
+	$sql = "SELECT * FROM topics1";
+				$result = $conn->query($sql);
+		if ($result->num_rows >0){
+		
+				while($row = $result->fetch_assoc()){
+
+						$check_u = "SELECT * FROM myguests WHERE username='".$row['topic_creator']."'";
+						$result1=$conn->query($check_u);
+						while($row_u = $result1->fetch_assoc()){
+							$user_id = $row_u['id'];
+					}
+				}
+		}
+		$ide=$_GET['id'];
+		
+	header("Location:topic.php?id=$ide&id2=$user_id");
+	
   }
 }
 FUNCTION setreply($conn)
